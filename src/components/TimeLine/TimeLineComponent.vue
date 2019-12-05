@@ -17,8 +17,8 @@
             <span class="ml-2">Publish date</span>
           </b-col>
           <b-col cols="6">
-            <b-form-radio class="abc" name="some-radios">Option A</b-form-radio>
-            <div class="abc pt-2" style="display: flex">
+            <b-form-radio class="radios_option" name="some-radios">Option A</b-form-radio>
+            <div class="radios_option pt-2" style="display: flex">
               <b-form-radio class="pt-2"></b-form-radio>
               <b-input type="date"></b-input>
               <b-input class="ml-3"></b-input>
@@ -101,18 +101,18 @@ export default {
 </script>
 
 <style>
-.abc .custom-control-input:checked ~ .custom-control-label::before {
+/* .radios_option .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
   border-color: #28a745;
   background-color: #28a745;
-}
-.not-focusable:focus {
+} */
+/* .not-focusable:focus {
   outline: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-}
+} */
 
-.btn-center {
+/* .btn-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,5 +124,5 @@ export default {
 }
 .btn.btn-fontSize {
   font-weight: 600;
-}
+} */
 </style>

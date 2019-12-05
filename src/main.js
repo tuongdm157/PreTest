@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import BootstrapVue from 'bootstrap-vue'
 import 'font-awesome/css/font-awesome.min.css'
-
+import '@/assets/scss/style.scss';
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 

@@ -1,0 +1,51 @@
+@import "../base/variable";
+
+.floatL {
+    float: left;
+}
+
+.floatR {
+    float: right;
+}
+
+.not-focusable:focus {
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.btn-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn.btn-saveDraft {
+    color: $color-black;
+    background-color: $color-gray;
+    border: none;
+}
+
+.btn.btn-fontSize {
+    font-weight: $font-weight600 ;
+}
+
+.radios_option .custom-control-input:checked~.custom-control-label::before {
+    color: $color-white;
+    border-color: $color-green;
+    background-color: $color-green;
+}
+
+.sp_descript {
+    font-size: smaller;
+    font-weight: $font-weight500;
+    color: $color-gray;
+}
+
+.descript {
+    color: $color-gray;
+}
+
+.title_color {
+    color: $color-green;
+}
