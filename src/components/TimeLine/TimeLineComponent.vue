@@ -93,8 +93,12 @@ export default {
   },
 
   methods: {
-    getCoupon(){
+    getCoupon(){  
+      this.$store.dispatch('timelineModule/getCoupon')
       this.$bvModal.show('my-modal');
+    },
+
+    test(){
     }
   }
 };
