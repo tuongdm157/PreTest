@@ -4,25 +4,23 @@
       <div class="text-left">
         <span class="descript">Pre-valid and valid coupons are listed</span>
       </div>
-      <hr />
-      <div>
+      <div v-for="coupon in couponActives" :key="coupon.id" class="coupon_preview">
         <b-row>
           <b-col cols="2">
-            <img src="@/assets/thumbnail.png" alt width="80px" />
+            <img :src="require(`@/assets/${coupon.thumbnail}.jpg`)" lalt="thumbnail" width="80px" />
           </b-col>
           <b-col cols="7">
-            <span class="title_color">Valid</span>
+            <span class="title_color">{{coupon.title}}</span>
             <br />
             <span>test</span>
             <br />
-            <span class="sp_descript">Validity period 02/12/2019 00:00 ~ 08/07/2018 23:59</span>
+            <span class="sp_descript">{{`Validity period ${coupon.startDate} ~ ${coupon.endDate}`}}</span>
           </b-col>
           <b-col cols="3" class="btn-center">
-            <b-button variant="outline-success">Select</b-button>
+            <b-button variant="outline-success" @click="onSelectCoupon(coupon.id)">Select</b-button>
           </b-col>
         </b-row>
       </div>
-      <hr />
       <div slot="modal-footer" class="w-100">
         <div class="mt-2 btn-center">
           <b-button class="not-focusable btn-fontSize">Close</b-button>
@@ -32,10 +30,29 @@
   </div>
 </template>
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  mounted() {
+    this.$store.dispatch("timelineModule/getCoupon");
+  },
+
+  methods: {
+    onSelectCoupon(data){
+      console.log(data)
+    }
+  },
+
+  computed: {
+    ...mapGetters({ couponActives: "timelineModule/couponActive" })
+  }
+};
 </script>
 
 <style>
+.coupon_preview {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+}
 /* .sp_descript {
   font-size: smaller;
   font-weight: 500;

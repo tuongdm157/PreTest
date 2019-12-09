@@ -87,18 +87,20 @@
 </template>
 <script>
 import PopupComponent from "./PopupComponent.vue";
+import { mapGetters } from "vuex";
 export default {
   components: {
     PopupComponent
   },
 
-  methods: {
-    getCoupon(){  
-      this.$store.dispatch('timelineModule/getCoupon')
-      this.$bvModal.show('my-modal');
-    },
+  computed: {
+    ...mapGetters({ couponActive: "timelineModule/couponActive" })
+  },
 
-    test(){
+  methods: {
+    getCoupon() {
+      this.$store.dispatch("timelineModule/getCoupon");
+      this.$bvModal.show("my-modal");
     }
   }
 };
