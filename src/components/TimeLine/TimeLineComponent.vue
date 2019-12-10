@@ -51,7 +51,7 @@
                 <b-button class="btn btn-light not-focusable mt-1">
                   <i class="fa fa-smile-o"></i>
                 </b-button>
-                <b-button class="btn btn-light not-focusable mt-1" @click="getCoupon">
+                <b-button class="btn btn-light not-focusable mt-1" @click="showPopupCoupon">
                   <i class="fa fa-folder"></i>
                 </b-button>
                 <b-button class="btn btn-light not-focusable mt-1">
@@ -61,13 +61,19 @@
                   <i class="fa fa-address-book-o"></i>
                 </b-button>
               </div>
-              <b-card>
-                <b-card-text>
-                  Some quick example text to build on the
-                  <em>card title</em> and make up the bulk of the card's
-                  content.
-                </b-card-text>
-              </b-card>
+
+              <div class="container-flex" v-for="item in couponActive" :key="item.id">
+                <div>
+                  <img class="container-flex-img" :src="require(`@/assets/${item.thumbnail}.jpg`)"/>
+                </div>
+                <div class="container-flex-content">
+                  <span class="container-flex-content-title">{{item.title}}</span>
+                  <span class="sp_descript">{{`Validity period ${item.startDate} ~ ${item.endDate}`}}</span>
+                </div>
+                <div>
+                  <b-button class="container-flex-close btn-fontSize" size="sm" style="border-radius: 0px 0px 0px 4.5px;" @click="onRemoveCoupon(item.id)">X</b-button>
+                </div>
+              </div>
             </b-card>
           </b-col>
         </b-row>
@@ -81,7 +87,7 @@
           style="width: 160px;"
         >Schedule</b-button>
       </div>
-      <PopupComponent />
+      <PopupComponent :couponInActive="couponInActive" :couponActive="couponActive" />
     </b-container>
   </div>
 </template>
@@ -94,41 +100,57 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ couponActive: "timelineModule/couponActive" })
+    ...mapGetters({
+      couponInActive: "timelineModule/couponInActive",
+      couponActive: "timelineModule/couponActive"
+    })
+  },
+
+  mounted() {
+    this.getCoupon();
   },
 
   methods: {
     getCoupon() {
       this.$store.dispatch("timelineModule/getCoupon");
+    },
+
+    showPopupCoupon() {
       this.$bvModal.show("my-modal");
+    },
+
+    onRemoveCoupon(id){
+      this.$store.dispatch("timelineModule/removeCoupon", id)
     }
   }
 };
 </script>
 
 <style>
-/* .radios_option .custom-control-input:checked ~ .custom-control-label::before {
+.radios_option .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
   border-color: #28a745;
   background-color: #28a745;
-} */
-/* .not-focusable:focus {
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-} */
+}
+.container-flex-img {
+  width: 110px;
+  margin-right: 20px;
+}
 
-/* .btn-center {
+.container-flex {
   display: flex;
-  align-items: center;
+  border: 1px solid #cccccc;
+  position: relative;
+}
+
+.container-flex-content {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
-.btn.btn-saveDraft {
-  color: black;
-  background-color: #ccc;
-  border: none;
+
+.container-flex-close {
+  position: absolute;
+  right: 0px;
 }
-.btn.btn-fontSize {
-  font-weight: 600;
-} */
 </style>

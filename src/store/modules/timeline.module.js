@@ -25,6 +25,24 @@ export default {
             state.page = payload.resultData.page;
             state.pageSize = payload.resultData.pageSize;
             state.total = payload.resultData.total;
+        },
+
+        UPDATE_COUPON(state, payload) {
+            state.coupon = state.coupon.map(item => {
+                if (item.id === payload) {
+                    item.status = 'ACTIVE'
+                }
+                return item
+            })
+        },
+
+        REMOVE_COUPON(state, payload) {
+            state.coupon = state.coupon.map(item => {
+                if (item.id === payload) {
+                    item.status = 'INACTIVE'
+                }
+                return item
+            })
         }
     },
 
@@ -41,8 +59,12 @@ export default {
                 .catch(err => { throw new Error(err) });
         },
 
-        updateCoupon(context){
-            context.commit('UPDATE_COUPON')
+        updateCoupon(context, id) {
+            context.commit('UPDATE_COUPON', id);
+        },
+
+        removeCoupon(context, id) {
+            context.commit('REMOVE_COUPON', id);
         }
     }
 }

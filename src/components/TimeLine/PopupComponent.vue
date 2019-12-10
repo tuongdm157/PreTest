@@ -4,7 +4,7 @@
       <div class="text-left">
         <span class="descript">Pre-valid and valid coupons are listed</span>
       </div>
-      <div v-for="coupon in couponActives" :key="coupon.id" class="coupon_preview">
+      <div v-for="coupon in couponInActive" :key="coupon.id" class="coupon_preview">
         <b-row>
           <b-col cols="2">
             <img :src="require(`@/assets/${coupon.thumbnail}.jpg`)" lalt="thumbnail" width="80px" />
@@ -17,13 +17,17 @@
             <span class="sp_descript">{{`Validity period ${coupon.startDate} ~ ${coupon.endDate}`}}</span>
           </b-col>
           <b-col cols="3" class="btn-center">
-            <b-button variant="outline-success" @click="onSelectCoupon(coupon.id)">Select</b-button>
+            <b-button
+              variant="outline-success"
+              class="btn-fontSize"
+              @click="onSelectCoupon(coupon.id)"
+            >Select</b-button>
           </b-col>
         </b-row>
       </div>
       <div slot="modal-footer" class="w-100">
         <div class="mt-2 btn-center">
-          <b-button class="not-focusable btn-fontSize">Close</b-button>
+          <b-button class="not-focusable btn-fontSize" @click="onClosePopUp">Close</b-button>
         </div>
       </div>
     </b-modal>
@@ -32,18 +36,20 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  mounted() {
-    this.$store.dispatch("timelineModule/getCoupon");
-  },
+  props: ["couponInActive", "couponActive"],
 
   methods: {
-    onSelectCoupon(data){
-      console.log(data)
-    }
-  },
+    onSelectCoupon(id) {
+      if (this.couponActive.length > 0) {
+        
+      }
+      this.$store.dispatch("timelineModule/updateCoupon", id);
+      this.onClosePopUp();
+    },
 
-  computed: {
-    ...mapGetters({ couponActives: "timelineModule/couponActive" })
+    onClosePopUp() {
+      this.$bvModal.hide("my-modal");
+    }
   }
 };
 </script>
