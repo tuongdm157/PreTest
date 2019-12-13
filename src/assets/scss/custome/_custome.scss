@@ -27,13 +27,13 @@
 }
 
 .btn.btn-fontSize {
-    font-weight: $font-weight600 ;
+    font-weight: $font-weight600;
 }
 
 .radios_option .custom-control-input:checked~.custom-control-label::before {
-    color: $color-white;
-    border-color: $color-green;
-    background-color: $color-green;
+    color: $color-white !important;
+    border-color: $color-green !important;
+    background-color: $color-green !important;
 }
 
 .sp_descript {
@@ -47,5 +47,72 @@
 }
 
 .title_color {
-    color: $color-green;
+    color: $color-blue;
+}
+
+.container-flex-img {
+    width: 110px;
+    margin-right: 20px;
+}
+
+.container-flex {
+    display: flex;
+    border: 1px solid #cccccc;
+    position: relative;
+}
+
+.container-flex-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-flex-close {
+    position: absolute;
+    right: 0px;
+}
+
+#container-flex-button.focusBtnPhoto {
+    color: #212529;
+    background-color: #dae0e5;
+    border-color: #d3d9df;
+}
+
+.container-flex-box .card-body .container-flex-box-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-flex-box-icon-color {
+    color: #cccccc;
+}
+
+.container-flex-box-title {
+    color: #28a745;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.datepicker input {
+    border: 1px solid #d2d2d2;
+    width: 10em;
+    height: 2.2em;
+    padding: 0.3em 0.5em;
+    font-size: 1em;
+}
+
+.radios_option {
+    display: flex;
+    align-items: center;
+}
+
+.radios_option .badgeLocal {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.coupon_preview {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 0;
 }

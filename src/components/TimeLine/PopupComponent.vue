@@ -55,19 +55,4 @@ export default {
 </script>
 
 <style>
-.coupon_preview {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1.5rem 0;
-}
-/* .sp_descript {
-  font-size: smaller;
-  font-weight: 500;
-  color: #ccc;
-}
-.descript {
-  color: #ccc;
-}
-.title_color {
-  color: #007bff;
-} */
 </style>
