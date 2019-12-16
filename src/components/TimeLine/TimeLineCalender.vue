@@ -10,10 +10,10 @@
           v-model="selected"
           @input="onChangeData()"
           class="radios_option"
-          value="A"
+          value="option1"
         >Publish now</b-form-radio>
         <div class="radios_option pt-2">
-          <b-form-radio v-model="selected" class="pt-2" value="B"></b-form-radio>
+          <b-form-radio v-model="selected" class="pt-2" value="option2"></b-form-radio>
           <Datepicker placeholder="MM/DD/YYYY" format="MM/dd/yyyy" class="mr-2 datepicker"></Datepicker>
           <VueTimepicker format="HH:mm" hide-clear-button class="mr-2"></VueTimepicker>
           <div>
@@ -36,13 +36,13 @@ export default {
   },
   data() {
     return {
-      selected: "A"
+      selected: "option1"
     };
   },
 
   methods: {
     onChangeData() {
-      let name = this.selected === "A" ? "Publish" : "Schedule";
+      let name = this.selected === "option1" ? "Publish" : "Schedule";
       this.$emit("onChangeData", name);
     }
   }

@@ -10,7 +10,7 @@
         </div>
         <hr />
       </div>
-      <TimeLinePostCalender @onChangeData="onChangeData"></TimeLinePostCalender>
+      <TimeLineCalender @onChangeData="onChangeData"></TimeLineCalender>
       <div>
         <b-row>
           <b-col cols="10">
@@ -29,7 +29,7 @@
                   <i :class="item.className"></i>
                 </b-button>
               </div>
-              <TimeLineContainerComponent
+              <TimeLineCardContextComponent
                 :isShowBox="isShowBox"
                 :initButtons="initButtons"
                 @showPopup="showPopup"
@@ -43,23 +43,23 @@
       <div class="mt-5 btn-center">
         <base-button :title="titleButton" :size="'lg'" :isShowButton="isShowButton"></base-button>
       </div>
-      <PopupComponent :couponInActive="couponInActive" :couponActive="couponActive" />
+      <CouponPopupComponent :couponInActive="couponInActive" :couponActive="couponActive" />
     </b-container>
   </div>
 </template>
 <script>
-import PopupComponent from "./PopupComponent.vue";
-import TimeLineContainerComponent from "./TimeLineContainerComponent.vue";
+import CouponPopupComponent from "./CouponPopupComponent.vue";
+import TimeLineCardContextComponent from "./TimeLineCardContextComponent.vue";
 import TimeLineCardComponent from "./TimeLineCardComponent.vue";
-import TimeLinePostCalender from "./TimeLinePostCalender.vue";
+import TimeLineCalender from "./TimeLineCalender.vue";
 import BaseButton from "../base/ButtonCommon.vue";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    PopupComponent,
-    TimeLineContainerComponent,
+    CouponPopupComponent,
+    TimeLineCardContextComponent,
     TimeLineCardComponent,
-    TimeLinePostCalender,
+    TimeLineCalender,
     BaseButton
   },
 
